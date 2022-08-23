@@ -10,32 +10,16 @@ import { CoursesService } from '../services/courses.service';
 })
 export class CoursesComponent implements OnInit {
 
-  courses: Course[] = this.coursesService.list();
+  courses: Course[] = []
   displayedColumns = ['name', 'category'];
 
-
   constructor(
-    private coursesService: CoursesService
-  ) {}
+    private courseService: CoursesService,
+  ) {
+    this.courses = this.courseService.list();
+  }
 
   ngOnInit(): void {
   }
 
 }
-
-// export class CoursesComponent implements OnInit {
-
-//   courses: Course[] = []
-//   displayedColumns = ['name', 'category'];
-
-//   courseService: CoursesService;
-
-//   constructor() {
-//     this.courseService = new CoursesService();
-//     this.courses = this.courseService.list();
-//   }
-
-//   ngOnInit(): void {
-//   }
-
-// }
