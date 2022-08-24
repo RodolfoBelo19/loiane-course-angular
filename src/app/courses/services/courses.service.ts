@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { delay, tap } from 'rxjs';
 
 import { Course } from '../model/course';
 import { first } from 'rxjs';
@@ -18,6 +18,7 @@ export class CoursesService {
     return this.httpClient.get<Course[]>(this.API)
     .pipe(
       first(),
+      delay(1000),
       tap(courses => console.log(courses))
     )
   }
